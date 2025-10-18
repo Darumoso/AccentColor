@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  AccentColor
 //
-//  Created by Héctor Quiroz on 08/11/25.
+//  Created by Héctor Quiroz on 11/10/25.
 //
 
 import UIKit
