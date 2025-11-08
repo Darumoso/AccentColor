@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  AccentColor
 //
-//  Created by Karla Lopez on 11/10/25.
+//  Created by Hector Quiroz on 11/10/25.
 //
 
 import UIKit
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
     }
     
     private func navigateToInformationController(){
-        let infoViewController = InformationViewController(nibName: nil, bundle: nil)
+        let infoViewController = InformationViewController()
         if customTextSwitch.isOn{
             infoViewController.informationText = customTextField.text
         }

@@ -2,7 +2,7 @@
 //  CaptionImage.swift
 //  AccentColor
 //
-//  Created by Karla Lopez on 25/10/25.
+//  Created by Hector Quiroz on 25/10/25.
 //
 
 import UIKit
