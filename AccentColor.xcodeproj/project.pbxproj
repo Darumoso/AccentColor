@@ -10,22 +10,9 @@
 		C4B337ED2EBFA7D400712A75 /* AccentColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccentColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C4B337FF2EBFA7D600712A75 /* Exceptions for "AccentColor" folder in "AccentColor" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = C4B337EC2EBFA7D400712A75 /* AccentColor */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C4B337EF2EBFA7D400712A75 /* AccentColor */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C4B337FF2EBFA7D600712A75 /* Exceptions for "AccentColor" folder in "AccentColor" target */,
-			);
 			path = AccentColor;
 			sourceTree = "<group>";
 		};

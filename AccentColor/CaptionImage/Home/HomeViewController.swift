@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  AccentColor
 //
-//  Created by Héctor Quiroz on 11/10/25.
+//  Created by Karla Lopez on 11/10/25.
 //
 
 import UIKit
@@ -24,36 +24,26 @@ class HomeViewController: UIViewController {
         picsButton.setImage(UIImage(systemName: imageType.isOn ? "dog.fill" :
                                         "cat.fill"), for: .normal)
         customTextField.isEditable = customTextSwitch.isOn
+        setBarButtonItemGroup()
         // Do any additional setup after loading the view.
     }
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let feedViewController = segue.destination as? FeedViewController{
-            feedViewController.pictureType = imageType.isOn ?.dog : .cat
-            feedViewController.showCaption = captionSwitch.isOn
-        }else if segue.identifier == "HomeInformationSegue", let InformationViewController = segue.destination as? InformationViewController{
-            if customTextSwitch.isOn{
-                InformationViewController.informationText = customTextField.text
-            }
-        }
-        
-    }
+    
     
 //
 //    @IBAction func picsButtonTapped(_ sender: Any) {
 //    }
     
-    @IBAction func loggOutButtonTapped(_ sender: Any) {
-        self.navigationController?.dismiss(animated: true)
-    }
+//    @IBAction func loggOutButtonTapped(_ sender: Any) {
+//        self.navigationController?.dismiss(animated: true)
+//    }
     
-    @IBAction func informationButtonTapped(_ sender: Any){
+    @objc func informationButtonTapped(_ sender: Any){
         if customTextSwitch.isOn{
             if customTextField.text != ""{
-                performSegue(withIdentifier: "HomeInformationSegue", sender: nil)
-                //homeInformationSegue
+                navigateToInformationController()                //homeInformationSegue
             }else{
                 let alertController = UIAlertController(title: nil, message: "PAdd custom text", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -62,9 +52,30 @@ class HomeViewController: UIViewController {
             }
         }else{
             //HomeInformationSegue
-            performSegue(withIdentifier: "HomeInformationSegue", sender: nil)
+            navigateToInformationController()
         }
     }
+    
+    private func setBarButtonItemGroup(){
+        let logoutButton = UIBarButtonItem(title: "Logout", image: UIImage(systemName: "multiply.circle.fill"), target: self, action: #selector(logout))
+        let informationButton = UIBarButtonItem(title: "Information", image: UIImage(systemName: "info.circle.fill"), target: self, action: #selector(informationButtonTapped))
+        navigationItem.centerItemGroups = [UIBarButtonItemGroup.fixedGroup(items: [logoutButton, informationButton])]
+    }
+    
+    @objc
+    private func logout(){
+        navigationController?.dismiss(animated: true)
+
+    }
+    
+    private func navigateToInformationController(){
+        let infoViewController = InformationViewController(nibName: nil, bundle: nil)
+        if customTextSwitch.isOn{
+            infoViewController.informationText = customTextField.text
+        }
+        present(infoViewController, animated: true)
+    }
+    
     
 
     @IBAction func imageTypeSwitchValueChanged(_ sender: UISwitch) {
@@ -77,6 +88,13 @@ class HomeViewController: UIViewController {
         customTextField.isEditable = sender.isOn
     }
     
+    @IBAction func picsButtonTapped(_ sender: UIButton) {
+        let feedViewController = FeedViewController(nibName: nil, bundle: nil)
+        feedViewController.pictureType = imageType.isOn ?.dog : .cat
+        feedViewController.showCaption = captionSwitch.isOn
+        
+        navigationController?.pushViewController(feedViewController, animated: true)
+    }
     
 
 }

@@ -2,7 +2,7 @@
 //  InformationViewController.swift
 //  AccentColor
 //
-//  Created by Héctor Quiroz on 18/10/25.
+//  Created by Karla Lopez on 18/10/25.
 //
 
 import UIKit
